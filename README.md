@@ -33,7 +33,7 @@ An online tool to instantly generate customized participation certificates for o
 - **Print Certificate** – Direct browser printing  
 - **Contact Developer Section** – Easy support access
 
-## [LIVE VERSION DEMO CLICK 👆 ON ME](https://car-racing-fahad.netlify.app/)
+## [LIVE VERSION DEMO CLICK 👆 ON ME](https://any-certificate-creator-fahad.netlify.app/)
 
 ## 🧰 Tech Stack
 
