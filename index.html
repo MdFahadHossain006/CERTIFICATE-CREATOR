@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Premium Certificate Creator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+<style>
+
+body{
+font-family:Poppins;
+background:linear-gradient(135deg,#020617,#0f172a);
+color:white;
+text-align:center;
+padding:30px;
+}
+
+h1{
+margin-bottom:20px;
+letter-spacing:1px;
+}
+
+.container{
+
+background:#1e293b;
+padding:25px;
+border-radius:12px;
+max-width:1000px;
+margin:auto;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+
+}
+
+input,button{
+
+padding:10px;
+margin:6px;
+border-radius:6px;
+border:none;
+font-size:14px;
+
+}
+
+input{
+width:220px;
+}
+
+button{
+
+background:#2563eb;
+color:white;
+cursor:pointer;
+
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+#certificate{
+
+width:900px;
+height:600px;
+margin:auto;
+background:#ffffff;
+border:20px double #1e3a8a;
+position:relative;
+padding:40px;
+
+}
+
+.title{
+font-family:'Playfair Display';
+font-size:42px;
+font-weight:bold;
+color:black;
+}
+
+.subtitle{
+font-size:18px;
+margin-top:8px;
+color:black;
+}
+
+.name{
+font-family:'Playfair Display';
+font-size:46px;
+margin-top:25px;
+font-weight:bold;
+color:black;
+}
+
+.desc{
+color:black;
+margin-top:10px;
+}
+
+.logo{
+
+position:absolute;
+top:20px;
+left:30px;
+width:100px;
+
+}
+
+.signature{
+
+position:absolute;
+bottom:70px;
+left:40px;
+width:160px;
+
+}
+
+.signtext{
+
+position:absolute;
+bottom:45px;
+left:40px;
+font-size:14px;
+color:black;
+
+}
+
+.qr{
+
+position:absolute;
+right:30px;
+bottom:40px;
+
+}
+
+.footer{
+
+position:absolute;
+bottom:10px;
+width:100%;
+font-weight:bold;
+font-size:12px;
+color:black;
+
+}
+
+.devbtn{
+
+margin-top:15px;
+background:#16a34a;
+
+}
+
+.social{
+
+display:none;
+margin-top:15px;
+
+}
+
+.social a{
+
+display:inline-block;
+margin:8px;
+padding:8px 15px;
+background:#2563eb;
+border-radius:6px;
+color:white;
+text-decoration:none;
+
+}
+
+.social a:hover{
+
+background:#1d4ed8;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>THIS WEBSITE IS DEVELOPED BY - MD FAHAD HOSSAIN</h1>
+
+<div class="container">
+
+<input type="text" id="certTitle" placeholder="Certificate Title">
+
+<input type="text" id="certName" placeholder="Student Name">
+
+<input type="text" id="certText" placeholder="Certificate Description">
+
+<br>
+
+<label>Upload Logo</label>
+<input type="file" id="logoUpload">
+
+<label>Upload Signature</label>
+<input type="file" id="signUpload">
+
+<br>
+
+<label>Border Color</label>
+<input type="color" id="borderColor">
+
+<label>Certificate Color</label>
+<input type="color" id="bgColor">
+
+<br>
+
+<button onclick="generate()">Update Certificate</button>
+
+<button onclick="downloadPDF()">Download PDF</button>
+
+<button onclick="window.print()">Print</button>
+
+<br>
+
+<button class="devbtn" onclick="showSocial()">CONTACT WITH DEVELOPER</button>
+
+<div class="social" id="socialLinks">
+
+<a href="https://www.facebook.com/share/175EksFzQm/" target="_blank">FACEBOOK</a>
+
+<a href="https://www.instagram.com/mdfahadhossain006?igsh=ZzhhbzljaXVxcmFw" target="_blank">INSTAGRAM</a>
+
+</div>
+
+</div>
+
+<br>
+
+<div id="certificate">
+
+<img id="logo" class="logo">
+
+<div class="title" id="title">CERTIFICATE</div>
+
+<div class="subtitle">OF PARTICIPATION</div>
+
+<div class="subtitle">THIS CERTIFICATE IS PROUDLY AWARDED TO</div>
+
+<div class="name" id="name">Student Name</div>
+
+<div class="desc" id="desc">For outstanding participation</div>
+
+<img id="sign" class="signature">
+
+<div class="signtext">Authorized Signature</div>
+
+<canvas id="qrCode" class="qr"></canvas>
+
+<div class="footer">
+THIS CERTIFICATE IS CREATED BY - MD FAHAD HOSSAIN
+</div>
+
+</div>
+
+<script>
+
+let qr = new QRious({
+
+element:document.getElementById('qrCode'),
+size:120,
+value:'certificate'
+
+});
+
+function generate(){
+
+let title=document.getElementById("certTitle").value
+let name=document.getElementById("certName").value
+let desc=document.getElementById("certText").value
+
+document.getElementById("title").innerText=title
+document.getElementById("name").innerText=name
+document.getElementById("desc").innerText=desc
+
+document.getElementById("certificate").style.borderColor=document.getElementById("borderColor").value
+
+document.getElementById("certificate").style.background=document.getElementById("bgColor").value
+
+qr.value="Certificate Holder: "+name+" | "+desc
+
+}
+
+logoUpload.onchange=evt=>{
+const[file]=logoUpload.files
+if(file){
+logo.src=URL.createObjectURL(file)
+}
+}
+
+signUpload.onchange=evt=>{
+const[file]=signUpload.files
+if(file){
+sign.src=URL.createObjectURL(file)
+}
+}
+
+function downloadPDF(){
+
+html2canvas(document.querySelector("#certificate")).then(canvas=>{
+
+const imgData=canvas.toDataURL("image/png")
+
+const {jsPDF}=window.jspdf
+
+const pdf=new jsPDF('landscape','pt',[900,600])
+
+pdf.addImage(imgData,'PNG',0,0,900,600)
+
+pdf.save("certificate.pdf")
+
+})
+
+}
+
+function showSocial(){
+
+let x=document.getElementById("socialLinks")
+
+if(x.style.display==="block"){
+x.style.display="none"
+}else{
+x.style.display="block"
+}
+
+}
+
+</script>
+
+</body>
+</html>
