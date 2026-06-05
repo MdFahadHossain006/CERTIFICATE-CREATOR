@@ -52,11 +52,46 @@ An online tool to instantly generate customized participation certificates for o
 4. Click "Update Certificate" to preview  
 5. Download PDF or Print  
 
-## 👨‍💻 Developer
+## ⭐ Support
+
+If you enjoyed this project:
+
+- ⭐ Star the repository
+- 🍴 Fork the project
+- 🛠️ Contribute new features
+- 📢 Share it with friends
+
+<div align="center">
+
+# 👨‍💻 Developer
 
 **MD FAHAD HOSSAIN**
+</div>
 
-## 📬 Contact
+## 📱 Developer Contact
 
-EMAIL - hossainmdfahad67@gmail.com 
-INSTAGRAM - https://www.instagram.com/mdfahadhossain006/
+  - [Facebook](https://www.facebook.com/share/18YSgb9Ywo/)
+  - [Instagram](https://www.instagram.com/mdfahadhossain006)
+  - [YouTube](https://youtube.com/@brightnessworld)
+  - [GitHub](https://github.com/MdFahadHossain006)
+  - [GMAIL](hossainmdfahad67@ganil.com) 
+
+---
+### ⚠️ Copyright & License
+
+**© 2026 MD. FAHAD HOSSAIN. All Rights Reserved.**
+
+This project is **proprietary software**. Unauthorized copying, distribution, 
+modification, or use of this code is strictly prohibited.
+
+- ❌ **No forking** without permission
+- ❌ **No copying** of source code
+- ❌ **No commercial use**
+- ✅ **Personal use only** as an end-user
+
+**Legal action will be taken against violators.**
+
+[Contact for Licensing](hossainmdfahad67@gmail.com)
+
+
+### "Speed is nothing without control." 🏎️💨
